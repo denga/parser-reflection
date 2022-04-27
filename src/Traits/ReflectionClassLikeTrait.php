@@ -698,9 +698,9 @@ trait ReflectionClassLikeTrait
 
     /**
      * {@inheritDoc}
-     * @param ReflectionClass|string $interfaceName
+     * @param \ReflectionClass|string $interfaceName
      */
-    public function implementsInterface(ReflectionClass|string $interfaceName): bool
+    public function implementsInterface(\ReflectionClass|string $interfaceName): bool
     {
         $allInterfaces = $this->getInterfaces();
 
