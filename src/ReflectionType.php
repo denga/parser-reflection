@@ -52,7 +52,7 @@ class ReflectionType extends BaseReflectionType
     /**
      * @inheritDoc
      */
-    public function allowsNull()
+    public function allowsNull(): bool
     {
         return $this->allowsNull;
     }
@@ -68,7 +68,7 @@ class ReflectionType extends BaseReflectionType
     /**
      * @inheritDoc
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->type;
     }
