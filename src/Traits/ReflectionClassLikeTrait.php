@@ -209,7 +209,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function getConstant($name)
+    public function getConstant(string $name)
     {
         if ($this->hasConstant($name)) {
             return $this->constants[$name];
@@ -657,7 +657,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function hasConstant($name)
+    public function hasConstant(string $name): bool
     {
         $constants   = $this->getConstants();
         $hasConstant = isset($constants[$name]) || array_key_exists($name, $constants);
@@ -669,7 +669,7 @@ trait ReflectionClassLikeTrait
      * {@inheritdoc}
      * @param string $name
      */
-    public function hasMethod($name)
+    public function hasMethod(string $name): \ReflectionMethod
     {
         $methods = $this->getMethods();
         foreach ($methods as $method) {
@@ -684,7 +684,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritdoc}
      */
-    public function hasProperty($name)
+    public function hasProperty(string $name): bool
     {
         $properties = $this->getProperties();
         foreach ($properties as $property) {
@@ -698,9 +698,9 @@ trait ReflectionClassLikeTrait
 
     /**
      * {@inheritDoc}
-     * @param string $interfaceName
+     * @param ReflectionClass|string $interfaceName
      */
-    public function implementsInterface($interfaceName)
+    public function implementsInterface($interfaceName): bool
     {
         $allInterfaces = $this->getInterfaces();
 
@@ -710,7 +710,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function inNamespace()
+    public function inNamespace(): bool
     {
         return !empty($this->namespaceName);
     }
@@ -718,7 +718,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function isAbstract()
+    public function isAbstract(): bool
     {
         if ($this->classLikeNode instanceof Class_ && $this->classLikeNode->isAbstract()) {
             return true;
@@ -734,7 +734,7 @@ trait ReflectionClassLikeTrait
     /**
      * Currently, anonymous classes aren't supported for parsed reflection
      */
-    public function isAnonymous()
+    public function isAnonymous(): bool
     {
         return false;
     }
@@ -742,7 +742,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function isCloneable()
+    public function isCloneable(): bool
     {
         if ($this->isInterface() || $this->isTrait() || $this->isAbstract()) {
             return false;
@@ -760,7 +760,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function isFinal()
+    public function isFinal(): bool
     {
         $isFinal = $this->classLikeNode instanceof Class_ && $this->classLikeNode->isFinal();
 
@@ -770,7 +770,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function isInstance($object)
+    public function isInstance($object): bool
     {
         if (!is_object($object)) {
             throw new RuntimeException(sprintf('Parameter must be an object, "%s" provided.', gettype($object)));
@@ -784,7 +784,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function isInstantiable()
+    public function isInstantiable(): bool
     {
         if ($this->isInterface() || $this->isTrait() || $this->isAbstract()) {
             return false;
@@ -800,7 +800,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function isInterface()
+    public function isInterface(): bool
     {
         return ($this->classLikeNode instanceof Interface_);
     }
@@ -808,7 +808,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function isInternal()
+    public function isInternal(): bool
     {
         // never can be an internal method
         return false;
@@ -817,7 +817,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function isIterateable()
+    public function isIterateable(): bool
     {
         return $this->implementsInterface('Traversable');
     }
@@ -825,7 +825,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function isSubclassOf($class)
+    public function isSubclassOf($class): bool
     {
         if (is_object($class)) {
             if ($class instanceof ReflectionClass) {
@@ -905,7 +905,7 @@ trait ReflectionClassLikeTrait
      * @return mixed
      * @throws ReflectionException If there is no such property and no default value was given
      */
-    public function getStaticPropertyValue($name, $default = null)
+    public function getStaticPropertyValue(string $name, $default = null)
     {
         $properties     = $this->getStaticProperties();
         $propertyExists = array_key_exists($name, $properties);
