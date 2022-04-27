@@ -669,7 +669,7 @@ trait ReflectionClassLikeTrait
      * {@inheritdoc}
      * @param string $name
      */
-    public function hasMethod(string $name): \ReflectionMethod
+    public function hasMethod(string $name): bool
     {
         $methods = $this->getMethods();
         foreach ($methods as $method) {
