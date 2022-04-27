@@ -75,7 +75,7 @@ class ReflectionNamedType extends BaseReflectionNamedType
     /**
      * @inheritDoc
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->type;
     }
