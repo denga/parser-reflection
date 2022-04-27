@@ -256,7 +256,7 @@ trait ReflectionClassLikeTrait
      * @return array An array of default properties, with the key being the name of the property and the value being
      * the default value of the property or NULL if the property doesn't have a default value
      */
-    public function getDefaultProperties()
+    public function getDefaultProperties(): array
     {
         $defaultValues = [];
         $properties    = $this->getProperties();
