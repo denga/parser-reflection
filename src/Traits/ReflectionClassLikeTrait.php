@@ -209,7 +209,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function getConstant(string $name)
+    public function getConstant(string $name): mixed
     {
         if ($this->hasConstant($name)) {
             return $this->constants[$name];
