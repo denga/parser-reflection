@@ -289,7 +289,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function getDocComment()
+    public function getDocComment(): string|false
     {
         $docComment = $this->classLikeNode->getDocComment();
 
