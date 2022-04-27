@@ -905,7 +905,7 @@ trait ReflectionClassLikeTrait
      * @return mixed
      * @throws ReflectionException If there is no such property and no default value was given
      */
-    public function getStaticPropertyValue(string $name, mixed &$default = null): mixed
+    public function getStaticPropertyValue(string $name, mixed $default = null): mixed
     {
         $properties     = $this->getStaticProperties();
         $propertyExists = array_key_exists($name, $properties);
