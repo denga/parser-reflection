@@ -238,7 +238,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function getConstructor()
+    public function getConstructor(): ?\ReflectionMethod
     {
         $constructor = $this->getMethod('__construct');
         if (!$constructor) {
