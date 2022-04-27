@@ -458,7 +458,7 @@ trait ReflectionClassLikeTrait
     /**
      * {@inheritDoc}
      */
-    public function getParentClass(): ReflectionClass|false
+    public function getParentClass(): \ReflectionClass|false
     {
         if (!isset($this->parentClass)) {
             static $extendsField = 'extends';
